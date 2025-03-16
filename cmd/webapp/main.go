@@ -1,20 +1,25 @@
 package main
 
 import (
-	"fmt"
-	"strings"
+	"net/http"
+	"webapp/internal/config"
 )
 
 func main() {
 
-	data := "hello my name is sankalpa. sankalpa is a programmer. programmers are genreally a person who writes code"
+	// load config
 
-	results := strings.Split(data, " ")
-	mapper := make(map[string]int)
+	cfg := config.MustLoad()
 
-	for _, word := range results {
-		mapper[word]++
-	}
-	fmt.Printf("%t", mapper)
-	fmt.Println(mapper)
+	// database setup
+
+	// setup router
+	router := http.NewServeMux()
+
+	router.HandleFunc("GET /", func(w http.ResponseWriter, r *http.Request) {
+
+	})
+
+	//
+
 }
