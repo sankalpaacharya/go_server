@@ -2,6 +2,7 @@ package config
 
 import (
 	"flag"
+	"fmt"
 	"log"
 	"os"
 
@@ -9,7 +10,7 @@ import (
 )
 
 type HTTPServer struct {
-	Addr string
+	Addr string `yaml:"address" env-required:"true"`
 }
 
 type Config struct {
@@ -42,6 +43,7 @@ func MustLoad() *Config {
 	if err != nil {
 		log.Fatalf("cannot read the config file: %s", err.Error())
 	}
+	fmt.Printf("Server Has started: %s", cfg.HTTPServer.Addr)
 
 	return &cfg
 }
